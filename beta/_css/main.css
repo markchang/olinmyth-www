@@ -1,0 +1,127 @@
+	@charset "utf-8";
+
+/* Overall styling */
+
+page,
+body {
+	background-color: #ccc;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+}
+a#rsslink {
+	color: #e74;
+	text-decoration: none;
+	padding: 5px;
+}
+
+/* Page Structure */
+
+.MainWrapper {
+	width: 810px;
+	margin: 1em auto 1em auto;
+	background: white;
+	padding: 2em;
+}
+
+.MenuBar {
+	/*background-color: #0fc;*/
+	padding: 5px 0 5px 0;
+	float: right;
+}
+.MenuBar a {
+	text-decoration: none;
+	color: #09c;
+	padding: 3px;
+	background: #ccc;
+	color: black;
+	border-bottom: 1px solid #00f;
+}
+.MenuBar .Current {
+	background: #2ad;
+	color: white;
+	border-bottom: none;
+}
+
+
+/* Show element styling */
+
+.ShowList {
+	/*max-height: 400px;*/
+	overflow: auto;
+	}
+
+.Show {
+	display: inline-block;
+	padding: 5px;
+	margin: 5px;
+	background: #ddd;
+	border: 1px solid #999;
+	text-decoration: none;
+	-moz-border-radius: 10px;
+	}
+
+.Show img,
+.Show .Caption {
+	width: 240px;
+	}
+	
+.Show img {
+	height: 135px;
+	border: none;
+	}
+
+.Show .Caption {
+	display: compact;
+	margin: 0;
+	color: black;
+	padding: 0.1em;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	font-size: 12px;
+	}
+
+/* Episode List element styling */
+
+.EpisodeList {
+	padding: 5px;
+	margin: 0;
+	margin-top: 1em;
+	padding-top: 1em;
+	border-top: 1px solid #999;
+}
+
+.EpisodeList img.ShowArt {
+	width: 160px;
+	height: 90px;
+}
+
+.EpisodeList .ShowName {
+	margin: 0;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.AllEpisodes table {
+	width: 100%:
+}
+
+.AllEpisodes table td,
+.AllEpisodes table th {
+	padding: 2px;
+	margin: 0;
+	font-size: 85%;
+}
+
+.AllEpisodes table th {
+	text-align: left;
+}
+
+.AllEpisodes table tbody tr {
+	border-top: 1px solid #333;
+	margin-top: 4px;
+}
+
+.AllEpisodes table tr.Shaded {
+	background-color: #ddd;
+}
