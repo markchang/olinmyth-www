@@ -25,6 +25,42 @@ a#rsslink {
 
 <?php
 
+/**
+ * Return human readable sizes
+ *
+ * @author      Aidan Lister <aidan@php.net>
+ * @version     1.3.0
+ * @link        http://aidanlister.com/2004/04/human-readable-file-sizes/
+ * @param       int     $size        size in bytes
+ * @param       string  $max         maximum unit
+ * @param       string  $system      'si' for SI, 'bi' for binary prefixes
+ * @param       string  $retstring   return string format
+ */
+function size_readable($size, $max = null, $system = 'si', $retstring = '%01.2f %s')
+{
+    // Pick units
+    $systems['si']['prefix'] = array('B', 'K', 'MB', 'GB', 'TB', 'PB');
+    $systems['si']['size']   = 1000;
+    $systems['bi']['prefix'] = array('B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB');
+    $systems['bi']['size']   = 1024;
+    $sys = isset($systems[$system]) ? $systems[$system] : $systems['si'];
+
+    // Max unit to display
+    $depth = count($sys['prefix']) - 1;
+    if ($max && false !== $d = array_search($max, $sys['prefix'])) {
+        $depth = $d;
+    }
+
+    // Loop
+    $i = 0;
+    while ($size >= $sys['size'] && $i < $depth) {
+        $size /= $sys['size'];
+        $i++;
+    }
+
+    return sprintf($retstring, $size, $sys['prefix'][$i]);
+}
+
 function daysAgo($timestamp){
     if($timestamp===false){ return false; }
     $s = time()-$timestamp;
@@ -75,7 +111,7 @@ foreach($files as $file){
 	$fpatterns = array( '/^torrents\//', '/\.torrent$/' );
 	$freplaces = array( 'recordings/', '' );
 	$source = @preg_replace($fpatterns, $freplaces, $file);
-	$size = @filesize($source);
+	$size = exec ('stat -c %s ' . escapeshellarg ($source) );
     $recording = array(
         'show' => $show,
         'date' => $date,
@@ -109,7 +145,7 @@ $numShows = count($shows);
 ?>
 
 <h2>TV @Olin</h2>
-<p><em><?php print "Now serving up $numRecordings episodes of $numShows shows totaling ".printGB($totalBytes)."GB"; ?></em></p>
+<p><em><?php print "Now serving up $numRecordings episodes of $numShows shows totaling ".size_readable($totalBytes); ?></em></p>
 <p>There's also an <a id="rsslink" href="rss.php"><img src="images/feed28.png" width="28" height="28" border="0" align="absmiddle"> RSS Feed</a> for BitTorrent clients</p>
 <dl>
 
@@ -131,8 +167,8 @@ foreach($shows as $show=>$recordings){
 
         if($age){ $info[] = $age; }
 		$info[] = date('D n/j',$recording['date']);
-        $info[] = printGB($recording['size']) . "GB $extension";
-
+        //$info[] = printGB($recording['size']) . "GB $extension";
+        $info[] = size_readable($recording['size']) . " $extension";
         if($info){ $info = " (".implode(", ",$info).")"; }
 
         echo "<dd><a href=\"$recording[torrent]\">$title</a>$info</dd>";

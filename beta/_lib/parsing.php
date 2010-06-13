@@ -28,9 +28,9 @@ function parseFilename($filename){
     $title = @$matches[5];
 
 	$fpatterns = array( '/^..\/torrents\//', '/\.torrent$/' );
-	$freplaces = array( '../files/', '' );
+	$freplaces = array( '../recordings/', '' );
 	$source = @preg_replace($fpatterns, $freplaces, $filename);
-	$size = @filesize($source);
+	$size = exec ('stat -c %s ' . escapeshellarg ($source) );
 	
 	//Define these keys in the sort order (show first, then date, then title, etc...)
     $recording = array(

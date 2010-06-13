@@ -105,7 +105,7 @@ Episodes:
 </div>
 
 <h2>TV @Olin</h2>
-<p><em><?php print "Now serving up $numRecordings episodes of $numShows shows totaling ".printGB($totalBytes)."GB"; ?></em></p>
+<p><em><?php print "Now serving up $numRecordings episodes of $numShows shows totaling ".size_readable($totalBytes); ?></em></p>
 <p>There's also an <a id="rsslink" href="rss.php"><img src="images/feed28.png" width="28" height="28" border="0" align="absmiddle"> RSS Feed</a> for BitTorrent clients</p>
 <hr size="1" /><br />
 
@@ -152,7 +152,7 @@ foreach($shows as $showInfo){
 
         if(!$age){ $age=""; }
 		$airdate = date('D n/j',$recording['date']);
-        $size = printGB($recording['size']) . "GB";
+        $size = size_readable($recording['size']);
 		$format = $extension;
 
         if($info){ $info = " (".implode(", ",$info).")"; }
