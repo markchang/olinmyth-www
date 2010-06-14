@@ -111,7 +111,7 @@ foreach($files as $file){
 	$fpatterns = array( '/^torrents\//', '/\.torrent$/' );
 	$freplaces = array( 'recordings/', '' );
 	$source = @preg_replace($fpatterns, $freplaces, $file);
-	$size = exec ('stat -c %s ' . escapeshellarg ($source) );
+	$size = exec ('stat -L -c %s ' . escapeshellarg ($source) );
     $recording = array(
         'show' => $show,
         'date' => $date,
