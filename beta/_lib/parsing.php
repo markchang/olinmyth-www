@@ -30,6 +30,8 @@ function parseFilename($filename){
 	$fpatterns = array( '/^..\/torrents\//', '/\.torrent$/' );
 	$freplaces = array( '../recordings/', '' );
 	$source = @preg_replace($fpatterns, $freplaces, $filename);
+        // have to use stat here because filesize() has overflow
+        // issues and is just not robust
 	$size = exec ('stat -c %s ' . escapeshellarg ($source) );
 	
 	//Define these keys in the sort order (show first, then date, then title, etc...)
