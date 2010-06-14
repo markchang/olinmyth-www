@@ -146,7 +146,7 @@ $numShows = count($shows);
 
 <h2>TV @Olin</h2>
 <p><em><?php print "Now serving up $numRecordings episodes of $numShows shows totaling ".size_readable($totalBytes); ?></em></p>
-<p>There's also an <a id="rsslink" href="rss.php"><img src="images/feed28.png" width="28" height="28" border="0" align="absmiddle"> RSS Feed</a> for BitTorrent clients</p>
+<p>There's also an <a id="rsslink" href="rss.php"><img src="images/feed28.png" width="28" height="28" border="0" align="absmiddle"> RSS Feed</a> for BitTorrent clients, and a <a href="/beta">beta</a> interface you can try.</p>
 <dl>
 
 <?php
