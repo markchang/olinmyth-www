@@ -145,8 +145,27 @@ $numShows = count($shows);
 ?>
 
 <h2>TV @Olin (uncompressed)</h2>
-<p>These are all the <b>uncompressed</b> shows we have. <br /><a href="http://tv.olin.edu/">Compressed recordings</a> are available, and you should probably use those.</p>
+
+<p>
+  Welcome to TV @Olin. This service records shows for you and makes them
+  available via BitTorrent. 
+</p>
+
+<p>
+  These are all the <b>uncompressed</b> shows we have. <br />
+  <a href="http://tv.olin.edu/">Compressed recordings</a> are available, 
+  and you should probably use those.
+</p>
+
+<p>
+  <a href="https://spreadsheets.google.com/pub?key=0AmqTCg41n9xtdG1aNHlrRmFFOGVnTXJndWtoTXBZQnc&hl=en&output=html">List of shows being recorded</a><br />
+  <a href="https://spreadsheets.google.com/viewform?formkey=dG1aNHlrRmFFOGVnTXJndWtoTXBZQnc6MQ">Form to request new recording</a>
+</p>
+
+
 <p><em><?php print "Now serving up $numRecordings episodes of $numShows shows totaling ".size_readable($totalBytes); ?></em></p>
+
+
 <p>There's also an <a id="rsslink" href="rss.php"><img src="images/feed28.png" width="28" height="28" border="0" align="absmiddle"> RSS Feed</a> for BitTorrent clients, and a <a href="/beta">beta</a> interface you can try.</p>
 <dl>
 
