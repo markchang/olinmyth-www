@@ -171,7 +171,8 @@ $numShows = count($shows);
 <?php
 /** Print out formatted text */
 foreach($shows as $show=>$recordings){
-    echo "<dt>$show</dt>";
+    echo "\n<!-- show -->\n";
+    echo "<dt>$show</dt>\n";
     foreach($recordings as $recording){
         $title = $recording['title'];
         if(!$title){ $title = $show; }
@@ -190,7 +191,7 @@ foreach($shows as $show=>$recordings){
         $info[] = size_readable($recording['size']) . " $extension";
         if($info){ $info = " (".implode(", ",$info).")"; }
 
-        echo "<dd><a href=\"$recording[torrent]\">$title</a>$info</dd>";
+        echo "<dd><a href=\"$recording[torrent]\">$title</a>$info</dd>\n";
         }
     }
 ?>
