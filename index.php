@@ -17,6 +17,10 @@ a#rsslink {
 	text-decoration: none;
 	padding: 5px;
 }
+a#tiny {
+        font-size: 8px ;
+}
+
 
 </style>
 </head>
@@ -191,7 +195,9 @@ foreach($shows as $show=>$recordings){
         $info[] = size_readable($recording['size']) . " $extension";
         if($info){ $info = " (".implode(", ",$info).")"; }
 
-        echo "<dd><a href=\"$recording[torrent]\">$title</a>$info</dd>\n";
+        echo "<dd><a href=\"$recording[torrent]\">$title</a>$info\n";
+        echo "<a id=\"tiny\" href=\"mailto:mark.chang@olin.edu?subject=[TV] $recording[torrent]\">broken</a></dd>\n";
+
         }
     }
 ?>
